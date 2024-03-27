@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "matt_builder",
+    "password": 9870,
+    "database": "voosh",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

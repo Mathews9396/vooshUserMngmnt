@@ -1,0 +1,14 @@
+NODE_ENV = development
+DB_NAME='db name'
+DB_USER='user name'
+DB_PASSWORD='password'
+DB_HOST='localhost'
+
+BACKEND_SCHEME='http'
+BACKEND_URL='localhost'
+BACKEND_PORT='3000'
+
+JWT_SECRET='jwtkey'
+
+GOOGLE_CLIENT_ID="59820596192-3ajp9gd00ghphtqbjdodv7qtnkhtkgso.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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"

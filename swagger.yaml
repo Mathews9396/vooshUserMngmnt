@@ -1,0 +1,255 @@
+# openapi: 3.0.0
+# info:
+#   title: Voosh Backend Assignment
+#   version: 1.0.0
+#   description: Backend application for user management
+
+# paths:
+#   /hello:
+#     get:
+#       summary: Get a greeting
+#       responses:
+#         '200':
+#           description: A successful response
+#           content:
+#             application/json:
+#               schema:
+#                 type: object
+#                 properties:
+#                   message:
+#                     type: string
+#                     example: Hello, world!
+
+
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Voosh Backend Assignment by Mathews",
+		"contact": {},
+		"version": "1.0",
+		"description": "API Docs"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:3000"
+		}
+	],
+	"apis": [
+		"./auth/routers/*router.js"
+	],
+	"paths": {
+		"/auth/register": {
+			"post": {
+				"tags": [
+					"User Auth"
+				],
+				"summary": "add User to DB",
+				"description": "for users to create an account",
+				"operationId": "register",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"firstName": {
+										"type": "string"
+									},
+									"secondName": {
+										"type": "string"
+									},
+									"profile-pic": {
+										"type": "string",
+										"format": "binary"
+									},
+									"contactNo": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"gender": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "User registered and token generated",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": []
+			}
+		},
+		"/login": {
+			"post": {
+				"tags": [
+					"User Auth"
+				],
+				"summary": "login to your account",
+				"description": "for users to login to their account in Neostore",
+				"operationId": "login",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									}
+								}
+							},
+							"example": {
+								"email": "mick@neostore.com",
+								"password": "mick@01"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "User authenticated and token generated",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": []
+			}
+		},
+    "/logout": {
+			"post": {
+				"tags": [
+					"User Auth"
+				],
+				"summary": "login to your account",
+				"description": "for users to login to their account in Neostore",
+				"operationId": "login",
+				"parameters": [],
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									}
+								}
+							},
+							"example": {
+								"email": "mick@neostore.com",
+								"password": "mick@01"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "User authenticated and token generated",
+						"headers": {}
+					}
+				},
+				"deprecated": false,
+				"security": []
+			}
+		},
+		"/profile": {
+			"get": {
+				"tags": [
+					"Manage Profile"
+				],
+				"summary": "Get Profile Details",
+				"description": "view profile details",
+				"operationId": "getProfile",
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Got the user profile",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/updateprofile": {
+			"post": {
+				"tags": [
+					"Manage Profile"
+				],
+				"summary": "Update Profile Details",
+				"description": "Update profile details",
+				"operationId": "updateProfile",
+				"requestBody": {
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"profileDetails": {
+										"firstName": {
+											"type": "string"
+										},
+										"secondName": {
+											"type": "string"
+										},
+										"gender": {
+											"type": "string"
+										},
+										"mobile": {
+											"type": "number"
+										}
+									}
+								}
+							},
+							"example": {
+								"profileDetails": {
+									"firstName": "Mick",
+									"secondName": "Jagger",
+									"gender": "Male",
+									"mobile": "9023415670"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "User profile updated",
+						"headers": {}
+					}
+				},
+				"deprecated": false
+			}
+		}
+	},
+	"security": [
+		{
+			"bearerAuth": []
+		}
+	]
+}
